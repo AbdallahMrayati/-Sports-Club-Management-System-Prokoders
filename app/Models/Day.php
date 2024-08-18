@@ -10,4 +10,9 @@ class Day extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function sports()
+    {
+        return $this->belongsToMany(Sport::class, 'sport_day');
+    }
 }

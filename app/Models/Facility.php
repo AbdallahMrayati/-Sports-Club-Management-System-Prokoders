@@ -10,4 +10,9 @@ class Facility extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'description', 'type'];
+
+    public function sports()
+    {
+        return $this->belongsToMany(Sport::class, 'sport_facilities');
+    }
 }

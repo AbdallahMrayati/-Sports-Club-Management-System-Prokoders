@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 
-class TagController extends Controller
+class TagController extends BaseController
 {
     /**
      * Display a listing of the resource.

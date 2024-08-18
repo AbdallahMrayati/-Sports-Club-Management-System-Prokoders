@@ -10,4 +10,9 @@ class Media extends Model
     use HasFactory;
 
     protected $fillable = ['sport_id', 'type', 'file_path'];
+
+    public function sport()
+    {
+        return $this->belongsTo(Sport::class);
+    }
 }

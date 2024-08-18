@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
-            $table->date('start_date');
-            $table->date('end_date');
             $table->enum('status', ['active', 'suspended', 'expired']);
             $table->string('suspension_reason')->nullable();
             $table->decimal('price', 8, 2);

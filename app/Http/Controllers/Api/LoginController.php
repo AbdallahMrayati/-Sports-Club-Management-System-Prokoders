@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\API\BaseController as BaseController;
+use App\Http\Controllers\API\BaseController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -17,27 +17,6 @@ class LoginController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    // public function register(Request $request)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'name' => 'required',
-    //         'email' => 'required|email',
-    //         'password' => 'required',
-    //         'c_password' => 'required|same:password',
-    //     ]);
-
-    //     if ($validator->fails()) {
-    //         return $this->sendError('Validation Error.', $validator->errors());
-    //     }
-
-    //     $input = $request->all();
-    //     $input['password'] = bcrypt($input['password']);
-    //     $user = User::create($input);
-    //     $success['token'] =  $user->createToken('MyApp')->plainTextToken;
-    //     $success['name'] =  $user->name;
-
-    //     return $this->sendResponse($success, 'User register successfully.');
-    // }
 
     /**
      * Login api
@@ -48,19 +27,19 @@ class LoginController extends BaseController
     {
         // Validate the request
         $request->validate([
-            'username' => 'required|string',
+            'email' => 'required|email',
             'password' => 'required|string',
         ]);
 
         // Attempt to authenticate the user
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             // Authentication passed...
             /** @var \App\Models\User $user **/
             $user = Auth::user();
             $success['token'] = $user->createToken('MyApp')->plainTextToken;
             $success['name'] = $user->name;
 
-            return $this->sendResponse($success, 'Admin login successfully.');
+            return $this->sendResponse($success, 'Admin login su.ccessfully.');
         } else {
             // Authentication failed...
             return $this->sendError('Unauthorised.', ['error' => 'Unauthorised']);
